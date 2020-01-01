@@ -5,7 +5,6 @@ import propagating from '../vendor/propagating';
 import { ActionCreators } from 'redux-undo';
 import CurveEditorRight from './curve-editor-right';
 import CurveEditorLeft from './curve-editor-left';
-import CodePanel from './code-panel';
 import Icons from './icons';
 import mod from '../helpers/resize-mod';
 import addPointerDown from '../helpers/add-pointer-down';
@@ -37,8 +36,7 @@ class CurveEditor extends Component {
     return (
       <div className={className} style={style}>
         <Icons />
-        <CodePanel state={state} />
-        <CurveEditorLeft state={state} />
+        <CurveEditorLeft state={state} value={state.currentValue} />
         <CurveEditorRight
           state={state}
           progressLines={p.progressLines}

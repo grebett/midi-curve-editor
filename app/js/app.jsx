@@ -11,12 +11,12 @@ import addPointerDown from './helpers/add-pointer-down';
 import transformPathSegments from './helpers/get-points-from-path';
 
 /*
-  API wrapper above the app itself.
+  CurveWidget wrapper above the app itself.
 */
-class API {
-  constructor(o = {}) {
+class CurveWidget {
+  constructor(o = {}, container) {
     this._o = o;
-
+    this._container = container;
     this._decalareDefaults();
     this._extendDefaults();
     this._vars();
@@ -88,7 +88,7 @@ class API {
           }}
         />
       </Provider>,
-      document.body
+      this._container
     );
   }
 
@@ -205,19 +205,31 @@ class API {
     this._updateProgressLine(p, 0, this._progressLines);
   };
 
-  getEasing(o = {}) {
-    // get the easing function regarding reverse options
+  initProgressLine = () => {
+    if (this._progressLines.length === 0) {
+      this.getMIDIValue()(0);
+      this.store.dispatch({ type: 'ADD_PROGRESS_LINE', data: {} });
+      this.updateProgressLine(0.5);
+    }
+  };
+
+  getMIDIValue(o = {}) {
+    const computeMIDIValue = modifier => Math.round(modifier * 127);
     const fun = (() => {
       const i = this._easings.length;
       return k => {
         const transform = this._easings[i].options.transform;
-        return transform ? transform(this._easing(k)) : this._easing(k);
+        const modifier = transform ? transform(this._easing(k)) : this._easing(k);
+        const MIDIValue = computeMIDIValue(modifier);
+        this.store.dispatch({ type: 'SET_CURRENT_MIDI_VALUE', data: { value: MIDIValue } });
+        return MIDIValue;
       };
     })();
 
     if (this._progressLines.length === 0) {
       this.store.dispatch({ type: 'ADD_PROGRESS_LINE', data: {} });
     }
+
     this._easings.push({ options: o, easing: fun });
 
     defer(() => {
@@ -282,5 +294,5 @@ class API {
   // }
 }
 
-export default API;
-window.MojsCurveEditor = API;
+export default CurveWidget;
+window.MojsCurveEditor = CurveWidget;

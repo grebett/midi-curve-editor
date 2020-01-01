@@ -1,7 +1,7 @@
 @import "../assets/globals.postcss.css";
 
 .curve-editor {
-  position: fixed;
+  position: relative;
   left: 0;
   top: 0;
   width: calc(403 * $PX);
@@ -13,6 +13,14 @@
 
   & * {
     box-sizing: border-box;
+  }
+
+  .value-indicator {
+    position: absolute;
+    bottom: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: white;
   }
 
   $gap: 10;
@@ -100,8 +108,8 @@
   }
 
   &.is-minimized {
-    width: calc(100 * $PX) !important;
-    height: calc(45 * $PX) !important;
+    width: calc(200 * $PX) !important;
+    height: calc(160 * $PX) !important;
     border-radius: calc(7 * $PX);
 
     [data-component="resize-handle"],

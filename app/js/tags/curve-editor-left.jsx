@@ -1,5 +1,4 @@
 import { h } from 'preact';
-import CodeButton from './code-button';
 import MinimizeButton from './minimize-button';
 import MaximizeButton from './maximize-button';
 import IconDivider from './icon-divider';
@@ -12,12 +11,12 @@ const CurveEditorLeft = ({ state }) => {
     <div className={CLASSES['curve-editor__left']} id="js-left-panel">
       <MinimizeButton state={state} />
       <MaximizeButton state={state} />
-      <CodeButton state={state} />
       <IconDivider />
       <PointControls
         state={state}
         className={CLASSES['curve-editor__anchor-buttons']}
       />
+      <div className={CLASSES['value-indicator']}>{state.controls.currentValue || 0}</div>
     </div>
   );
 };

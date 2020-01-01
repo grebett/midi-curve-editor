@@ -1,6 +1,7 @@
 @import "../assets/globals.postcss.css";
 
 .code-panel {
+  display: none;
   position: absolute;
   left: calc(10 * $PX);
   right: calc(10 * $PX);

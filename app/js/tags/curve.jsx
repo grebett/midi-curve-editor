@@ -78,7 +78,7 @@ class Curve extends Component {
       return 100;
     }
 
-    return C.CURVE_SIZE * 4.28;
+    return C.CURVE_SIZE * 4.28 / 6;
   }
 
   _getStyle(state) {
@@ -112,16 +112,16 @@ class Curve extends Component {
       points = [],
       len = pointsData.length;
 
-    for (var i = 0; i < len; i++) {
-      points.push(
-        <Point
-          point={pointsData[i]}
-          state={state}
-          index={i}
-          pointsCount={len}
-        />
-      );
-    }
+      for (var i = 0; i < len; i++) {
+        points.push(
+          <Point
+            point={pointsData[i]}
+            state={state}
+            index={i}
+            pointsCount={len}
+          />
+        );
+      }
 
     return points;
   }
