@@ -61,10 +61,9 @@ class CurveEditor extends Component {
     const height = `height: ${Y_SIZE - temp_top + temp_bottom}px`,
       width = `width: ${X_SIZE + temp_right}px`,
       x = resize.x + resize.tempX,
-      y = resize.y + resize.tempY,
-      transform = `transform: translate(${x}px, ${y + temp_top}px)`;
+      y = resize.y + resize.tempY;
 
-    return `${mojs.h.prefix.css}${transform}; ${transform}; ${width}; ${height};`;
+    return `${width}; ${height};`;
   }
 
   componentDidMount() {
