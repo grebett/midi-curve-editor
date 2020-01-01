@@ -6,7 +6,7 @@ const INITIAL_STATE = {
   isMinimize: false,
   isActive: false,
   isHighlight: false,
-  currentValue: 256,
+  currentValue: 0,
 };
 
 const controls = (state = INITIAL_STATE, action) => {
