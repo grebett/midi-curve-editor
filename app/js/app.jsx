@@ -284,14 +284,10 @@ class CurveWidget {
     }
   }
 
-  // highlight() { this.store.dispatch({ type: 'SET_HIGHLIGHT', data: true }); }
-  // dim() { this.store.dispatch({ type: 'SET_HIGHLIGHT', data: false }); }
-  // toggleHighlight() {
-  //   const state = this.store.getState();
-  //   const {controls} = state;
-  //
-  //   controls.isHighlight ? this.dim() : this.highlight();
-  // }
+  dispose() {
+    const el = this._el.base;
+    el.parentNode.removeChild(el);
+  }
 }
 
 export default CurveWidget;
