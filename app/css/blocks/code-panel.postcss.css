@@ -1,0 +1,56 @@
+@import "../assets/globals.postcss.css";
+
+.code-panel {
+  position: absolute;
+  left: calc(10 * $PX);
+  right: calc(10 * $PX);
+  bottom: 100%;
+  z-index: 1;
+  overflow: hidden;
+  padding-top: calc(16 * $PX);
+  box-sizing: content-box;
+
+  &__inner {
+    border-radius: calc(6 * $PX) calc(6 * $PX) 0 0;
+    background: rgba(61, 27, 60, 1);
+    padding: calc(4 * $PX) calc(5 * $PX) calc(5 * $PX);
+    transform: translateY(100%);
+    transition: all 0.2s ease-out;
+  }
+
+  [data-component="resize-handle"] {
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+  }
+
+  &__input-wrap {
+    border-radius: calc(2 * $PX);
+    background: #42103f;
+    border: 1px solid $c-pastel-purple;
+    box-shadow: inset calc(2 * $PX) calc(2 * $PX) 0 rgba(0, 0, 0, 0.5);
+  }
+
+  &__input-field {
+    display: block;
+    background: transparent;
+    color: $c-white;
+    font-size: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: calc(0.45 * $PX);
+    font-weight: 100;
+    padding: 0 0.3em 0 0.8em;
+    border: none;
+    width: 100%;
+    height: calc(21 * $PX);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  & ::selection {
+    background: $c-orange;
+  }
+
+  &.is-open &__inner {
+    transform: translateY(0);
+  }
+}

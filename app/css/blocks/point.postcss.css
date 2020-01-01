@@ -1,0 +1,46 @@
+@import "../assets/globals.postcss.css";
+
+$size: 10;
+.point {
+  position: absolute;
+  width: calc($size * $PX);
+  height: calc($size * $PX);
+  margin-left: calc(-$size/2 * $PX);
+  margin-top: calc(-$size/2 * $PX);
+  cursor: move;
+  background: lightblue;
+  border-radius: 50%;
+  z-index: 3;
+  box-shadow: calc(3 * $PX) calc(3 * $PX) 0 rgba(0, 0, 0, 0.5);
+
+  &__touch {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: calc(2 * $size * $PX);
+    height: calc(2 * $size * $PX);
+    margin-left: calc(-$size * $PX);
+    margin-top: calc(-$size * $PX);
+  }
+
+  [data-component="little-handle"] {
+    display: none;
+  }
+
+  &:hover,
+  &.is-selected {
+    background: white;
+  }
+
+  &.is-selected {
+    & [data-component="little-handle"] {
+      display: block;
+    }
+  }
+
+  &.is-hide-handles {
+    & [data-component="little-handle"] {
+      display: none;
+    }
+  }
+}
