@@ -288,6 +288,14 @@ class CurveWidget {
     const el = this._el.base;
     el.parentNode.removeChild(el);
   }
+
+  forceSaveState() {
+    const preState = { ...this.store.getState() };
+    delete preState.points.history;
+    delete preState.pointControls.history;
+    preState.progressLines.lines = [];
+    localStorage.setItem(this._localStorage, JSON.stringify(preState));
+  }
 }
 
 export default CurveWidget;
