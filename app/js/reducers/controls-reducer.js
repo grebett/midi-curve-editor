@@ -6,7 +6,6 @@ const INITIAL_STATE = {
   isMinimize: false,
   isActive: false,
   isHighlight: false,
-  currentValue: 0,
 };
 
 const controls = (state = INITIAL_STATE, action) => {
@@ -27,9 +26,6 @@ const controls = (state = INITIAL_STATE, action) => {
     // case 'SET_HIGHLIGHT': {
     //   return { ...state, isHighlight: action.data };
     // }
-    case 'SET_CURRENT_MIDI_VALUE': {
-      return { ...state, currentValue: action.data.value };
-    }
   }
   return state;
 };

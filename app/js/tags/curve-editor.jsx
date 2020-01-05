@@ -36,12 +36,12 @@ class CurveEditor extends Component {
     return (
       <div className={className} style={style}>
         <Icons />
-        <CurveEditorLeft state={state} value={state.currentValue} />
         <CurveEditorRight
           state={state}
           progressLines={p.progressLines}
           options={options}
         />
+        <CurveEditorLeft state={state} />
       </div>
     );
   }

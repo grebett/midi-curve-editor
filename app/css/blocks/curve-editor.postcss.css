@@ -8,7 +8,7 @@
   height: calc(378 * $PX);
   border-radius: calc(12 * $PX);
   background: #050205ff;
-  z-index: 100;
+  z-index: 1;
   box-shadow: 0 0 calc(3 * $PX) calc(1 * $PX) rgba(0, 0, 0, 0.38);
 
   & * {

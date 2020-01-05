@@ -209,7 +209,6 @@ class CurveWidget {
     if (this._progressLines.length === 0) {
       this.getMIDIValue()(0);
       this.store.dispatch({ type: 'ADD_PROGRESS_LINE', data: {} });
-      this.updateProgressLine(0.5);
     }
   };
 
@@ -220,9 +219,7 @@ class CurveWidget {
       return k => {
         const transform = this._easings[i].options.transform;
         const modifier = transform ? transform(this._easing(k)) : this._easing(k);
-        const MIDIValue = computeMIDIValue(modifier);
-        this.store.dispatch({ type: 'SET_CURRENT_MIDI_VALUE', data: { value: MIDIValue } });
-        return MIDIValue;
+        return computeMIDIValue(modifier);
       };
     })();
 
@@ -293,7 +290,6 @@ class CurveWidget {
     const preState = { ...this.store.getState() };
     delete preState.points.history;
     delete preState.pointControls.history;
-    preState.progressLines.lines = [];
     localStorage.setItem(this._localStorage, JSON.stringify(preState));
   }
 }
